@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core'
-import {CourseService} from './course.service'
- 
+import {CourseService} from './course.service' 
 
 @Component({
     selector: 'courses',

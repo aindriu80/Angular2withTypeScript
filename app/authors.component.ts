@@ -8,7 +8,7 @@ import {AuthorService} from './author.service'
     {{ title }}
     <ul>
         <li *ngFor="#author of authors">
-        {{ course }}
+        {{ author }}
         </li>
     </ul>
     `,
