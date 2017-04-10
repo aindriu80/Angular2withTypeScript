@@ -24,6 +24,7 @@ System.register(['angular2/core', './course.service'], function(exports_1, conte
             CoursesComponent = (function () {
                 function CoursesComponent(courseService) {
                     this.title = "The title of courses page";
+                    this.courses = courseService.getCourses();
                 }
                 CoursesComponent = __decorate([
                     core_1.Component({
