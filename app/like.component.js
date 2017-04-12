@@ -11,42 +11,42 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var FavoriteComponent;
+    var LikeComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FavoriteComponent = (function () {
-                function FavoriteComponent() {
-                    this.isFavorite = false;
-                    this.change = new core_1.EventEmitter();
+            LikeComponent = (function () {
+                function LikeComponent() {
+                    this.totalLikes = 0;
+                    this.iLike = false;
                 }
-                FavoriteComponent.prototype.onClick = function () {
-                    this.isFavorite = !this.isFavorite;
-                    this.change.emit({ newValue: this.isFavorite });
+                LikeComponent.prototype.onClick = function () {
+                    this.iLike = !this.iLike;
+                    this.totalLikes += this.iLike ? 1 : -1;
                 };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], FavoriteComponent.prototype, "isFavorite", void 0);
+                ], LikeComponent.prototype, "totalLikes", void 0);
                 __decorate([
-                    core_1.Output(), 
+                    core_1.Input(), 
                     __metadata('design:type', Object)
-                ], FavoriteComponent.prototype, "change", void 0);
-                FavoriteComponent = __decorate([
+                ], LikeComponent.prototype, "iLike", void 0);
+                LikeComponent = __decorate([
                     core_1.Component({
-                        selector: 'favorite',
-                        templateUrl: 'app/favorite.template.html',
-                        styles: ["\n        .glyphicon-star {\n            color: red;\n        }\n    "]
+                        selector: 'like',
+                        template: "\n    <i\n            class=\"glyphicon glyphicon-heart\"\n            [class.highlighted]=\"iLike\"\n            (click)=\"onClick()\">\n    </i>\n    <span>{{ totalLikes }}</span>\n             ",
+                        styles: ["       \n            .glyphicon-heart {\n            color: #ccc;\n            cursor: pointer;\n        }\n        .highlighted {\n            color: deeppink;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], FavoriteComponent);
-                return FavoriteComponent;
+                ], LikeComponent);
+                return LikeComponent;
             }());
-            exports_1("FavoriteComponent", FavoriteComponent);
+            exports_1("LikeComponent", LikeComponent);
         }
     }
 });
-//# sourceMappingURL=favorite.component.js.map
+//# sourceMappingURL=like.component.js.map
