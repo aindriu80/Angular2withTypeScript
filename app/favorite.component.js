@@ -28,7 +28,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.change.emit({ newValue: this.isFavorite });
                 };
                 __decorate([
-                    core_1.Input('is-favorite'), 
+                    core_1.Input(), 
                     __metadata('design:type', Object)
                 ], FavoriteComponent.prototype, "isFavorite", void 0);
                 __decorate([
@@ -38,8 +38,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 FavoriteComponent = __decorate([
                     core_1.Component({
                         selector: 'favorite',
-                        template: "    \n <i \n        class=\"glyphicon\"\n        [class.glyphicon-star-empty]=\"!isFavorite\"\n        [class.glyphicon-star]=\"isFavorite\"\n        (click)=\"onClick()\">\n    </i>\n    ",
-                        inputs: ['isFavorite:is-favorite']
+                        templateUrl: 'app/favorite.template.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], FavoriteComponent);

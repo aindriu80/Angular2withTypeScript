@@ -31,7 +31,7 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                 function AppComponent() {
                     this.post = {
                         title: "Title",
-                        isFavorite: true
+                        isFavorite: false
                     };
                 }
                 AppComponent.prototype.onFavoriteChange = function ($event) {
@@ -40,7 +40,7 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My First Angular 2 App</h1><courses></courses><authors></authors><button class ="btn btn-primary">Submit</button><br><favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>',
+                        template: '<h1>My First Angular 2 App</h1><courses></courses><authors></authors><button class ="btn btn-primary">Submit</button><br><favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>',
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favorite_component_1.FavoriteComponent]
                     }), 
                     __metadata('design:paramtypes', [])
