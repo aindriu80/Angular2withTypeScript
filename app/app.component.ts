@@ -1,17 +1,18 @@
 import {Component} from 'angular2/core';
-import {CoursesComponent} from './courses.component'
-import {AuthorsComponent} from './authors.component'
-import {FavoriteComponent} from './favorite.component'
-import {LikeComponent} from './like.component'
-import {VoterComponent} from './voter.component'
-import {TweetComponent} from './tweet.component'
-import {TweetService} from './tweet.service'
+import {CoursesComponent} from './courses.component';
+import {AuthorsComponent} from './authors.component';
+import {FavoriteComponent} from './favorite.component';
+import {LikeComponent} from './like.component';
+import {VoterComponent} from './voter.component';
+import {TweetComponent} from './tweet.component';
+import {TweetService} from './tweet.service';
+import {BootstrapPanel} from './bootstrap.panel.compenent';
 
 
 @Component({
     selector: 'my-app',
     template: `   
-    <h1>My First Angular 2 App</h1>
+    <h2>My First Angular 2 App</h2>
     <i class='glyphicon glyphicon-star'></i>    
     <courses></courses>
      <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
@@ -32,9 +33,19 @@ import {TweetService} from './tweet.service'
             </ul>
             <br/>
             {{ coursess.price | currency: 'EUR':true:'2.2-2'}}
+             <br/>
+        
+
+        <bs-panel title="Who can see my stuff?">
+        Content of who can see my stuff
+        </bs-panel>
+        <bs-panel title="Who can contact me?">
+            Content of who can contact me
+        </bs-panel>
+          
   
     `,
-    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent],
+    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel],
     providers: [TweetService]
     
 })
