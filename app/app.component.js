@@ -51,6 +51,11 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                         totalLikes: 10,
                         iLike: false
                     };
+                    this.courses = ['course 1', 'course 2', 'course 3'];
+                    this.coursess = {
+                        price: 222.22,
+                        students: 5943
+                    };
                     this.tweets = tweetService.getTweets();
                 }
                 AppComponent.prototype.onFavoriteChange = function ($event) {
@@ -62,7 +67,7 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "   \n    <h1>My First Angular 2 App</h1>\n    <i class='glyphicon glyphicon-star'></i>    \n    <courses></courses>\n     <like [totalLikes]=\"tweet.totalLikes\" [iLike]=\"tweet.iLike\"></like>\n    <authors></authors>\n        <voter\n        [voteCount]=\"post.voteCount\"\n        [myVote]=\"post.myVote\"\n        (vote)=\"onVote($event)\">\n    </voter>\n    <button class =\"btn btn-primary\">Submit</button><p>\n    <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    <div *ngFor=\"#tweet of tweets\">\n            <tweet [data]=\"tweet\"></tweet>\n        </div>\n\n  \n    ",
+                        template: "   \n    <h1>My First Angular 2 App</h1>\n    <i class='glyphicon glyphicon-star'></i>    \n    <courses></courses>\n     <like [totalLikes]=\"tweet.totalLikes\" [iLike]=\"tweet.iLike\"></like>\n    <authors></authors>\n        <voter\n        [voteCount]=\"post.voteCount\"\n        [myVote]=\"post.myVote\"\n        (vote)=\"onVote($event)\">\n    </voter>\n    <button class =\"btn btn-primary\">Submit</button><p>\n    <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    <div *ngFor=\"#tweet of tweets\">\n            <tweet [data]=\"tweet\"></tweet>\n</div>\n            <ul>\n            <li *ngFor=\"#course of courses, #i = index\">\n            {{ i + 1 }} - {{ course }} </li>\n            </ul>\n            <br/>\n            {{ coursess.price | currency: 'EUR':true:'2.2-2'}}\n  \n    ",
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favorite_component_1.FavoriteComponent, like_component_1.LikeComponent, voter_component_1.VoterComponent, tweet_component_1.TweetComponent],
                         providers: [tweet_service_1.TweetService]
                     }), 

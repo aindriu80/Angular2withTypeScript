@@ -25,14 +25,21 @@ import {TweetService} from './tweet.service'
     <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
     <div *ngFor="#tweet of tweets">
             <tweet [data]="tweet"></tweet>
-        </div>
-
+</div>
+            <ul>
+            <li *ngFor="#course of courses, #i = index">
+            {{ i + 1 }} - {{ course }} </li>
+            </ul>
+            <br/>
+            {{ coursess.price | currency: 'EUR':true:'2.2-2'}}
   
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent],
     providers: [TweetService]
+    
 })
 export class AppComponent {
+    
     post ={
         voteCount:10,
         myVote:0,
@@ -54,7 +61,11 @@ export class AppComponent {
     onVote($event){
         console.log($event);
     }
-    
+    courses =['course 1', 'course 2', 'course 3'];
+    coursess ={ 
+        price: 222.22,
+        students: 5943
+            };
  }
 
     
