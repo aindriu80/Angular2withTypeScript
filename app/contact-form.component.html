@@ -5,13 +5,23 @@
             ngControl="firstName" 
             #firstName="ngForm" 
             id ="firstName" 
-            type="firstName" 
+            type="text" 
             class="form-control"
-            required>
-        <div class="alert alert-danger" 
-        *ngIf="firstName.touched && !firstName.valid">
-            First name is required.
+            required
+            minlength="3">
+        <div *ngIf="firstName.touched && firstName.errors">
+            {{ firstName.errors | json }}
+            <div
+                class="alert alert-danger" 
+                *ngIf="firstName.errors.required">
+                First name is required.
             </div>
+            <div
+                class="alert alert-danger"
+                *ngIf="firstName.errors.minlength">
+                First name should be a minimum {{ firstName.errors.minlength.requiredLength}} characters.
+            </div>
+        </div>
     </div>
     <div class="form-group">
             <label for="comment">Comment</label>
