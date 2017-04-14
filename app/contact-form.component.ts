@@ -6,7 +6,10 @@ import {Component} from 'angular2/core';
     selector: 'contact-form',
     templateUrl: 'app/contact-form.component.html'    
 })
-export class ContactFormComponent {          
+export class ContactFormComponent {  
+    log(x){
+        console.log(x);
+    }        
  }
 
     

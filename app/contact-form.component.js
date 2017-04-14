@@ -21,6 +21,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             ContactFormComponent = (function () {
                 function ContactFormComponent() {
                 }
+                ContactFormComponent.prototype.log = function (x) {
+                    console.log(x);
+                };
                 ContactFormComponent = __decorate([
                     core_1.Component({
                         selector: 'contact-form',

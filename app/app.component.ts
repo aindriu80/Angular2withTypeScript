@@ -13,8 +13,7 @@ import {ContactFormComponent} from './contact-form.component'
 @Component({
     selector: 'my-app',
     template: `   
-    <h2>My First Angular 2 App</h2>
-    <i class='glyphicon glyphicon-star'></i>    
+    <h2>My First Angular 2 App</h2>   
     <courses></courses>
      <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
     <authors></authors>
@@ -22,8 +21,7 @@ import {ContactFormComponent} from './contact-form.component'
         [voteCount]="post.voteCount"
         [myVote]="post.myVote"
         (vote)="onVote($event)">
-    </voter>
-    <button class ="btn btn-primary">Submit</button><p>
+    </voter>    
     <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
     <div *ngFor="#tweet of tweets">
             <tweet [data]="tweet"></tweet>
