@@ -9,12 +9,14 @@ import {TweetService} from './tweet.service';
 import {BootstrapPanel} from './bootstrap.panel.compenent';
 import {ContactFormComponent} from './contact-form.component';
 import {TemplateFormComponent} from './template-driven-Form.component';
+import {SignUpFormComponent} from './signup-form.component';
 
 
 @Component({
     selector: 'my-app',
     template: `   
-    <h2>My First Angular 2 App</h2>   
+ <h2>My First Angular 2 App</h2>   
+ <!--
     <courses></courses>
      <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
     <authors></authors>
@@ -35,7 +37,6 @@ import {TemplateFormComponent} from './template-driven-Form.component';
             {{ coursess.price | currency: 'EUR':true:'2.2-2'}}
              <br/>
         
-
         <bs-panel title="Who can see my stuff?">
         Content of who can see my stuff
         </bs-panel>
@@ -44,9 +45,14 @@ import {TemplateFormComponent} from './template-driven-Form.component';
         </bs-panel>
           <contact-form></contact-form>
           <template-form></template-form>
+          -->
+          <signup-form></signup-form>
+        
+          
+  
   
     `,
-    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel, ContactFormComponent, TemplateFormComponent],
+    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent],
     providers: [TweetService]
     
 })
