@@ -7,7 +7,8 @@ import {VoterComponent} from './voter.component';
 import {TweetComponent} from './tweet.component';
 import {TweetService} from './tweet.service';
 import {BootstrapPanel} from './bootstrap.panel.compenent';
-import {ContactFormComponent} from './contact-form.component'
+import {ContactFormComponent} from './contact-form.component';
+import {TemplateFormComponent} from './template-driven-Form.component';
 
 
 @Component({
@@ -42,9 +43,10 @@ import {ContactFormComponent} from './contact-form.component'
             Content of who can contact me
         </bs-panel>
           <contact-form></contact-form>
+          <template-form></template-form>
   
     `,
-    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel, ContactFormComponent],
+    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel, ContactFormComponent, TemplateFormComponent],
     providers: [TweetService]
     
 })
