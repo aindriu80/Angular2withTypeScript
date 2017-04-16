@@ -10,13 +10,15 @@ import {BootstrapPanel} from './bootstrap.panel.compenent';
 import {ContactFormComponent} from './contact-form.component';
 import {TemplateFormComponent} from './template-driven-Form.component';
 import {SignUpFormComponent} from './signup-form.component';
+import {ChangePasswordFormComponent} from './change-password-form-component';
 
 
 @Component({
     selector: 'my-app',
     template: `   
+    <!--
  <h2>My First Angular 2 App</h2>   
- <!--
+ 
     <courses></courses>
      <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
     <authors></authors>
@@ -44,15 +46,18 @@ import {SignUpFormComponent} from './signup-form.component';
             Content of who can contact me
         </bs-panel>
           <contact-form></contact-form>
-          <template-form></template-form>
-          -->
+          <template-form></template-form>        
           <signup-form></signup-form>
+            -->
+            <change-password-form></change-password-form>
+
         
           
   
   
     `,
-    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent],
+    directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
+    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent],
     providers: [TweetService]
     
 })
