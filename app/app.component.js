@@ -63,6 +63,7 @@ System.register(['angular2/core', './courses.component', './authors.component', 
             AppComponent = (function () {
                 function AppComponent(tweetService, _postService) {
                     this._postService = _postService;
+                    this.isLoading = true;
                     this.post = {
                         voteCount: 10,
                         myVote: 0,
@@ -80,20 +81,24 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                     };
                     this.tweets = tweetService.getTweets();
                 }
-                AppComponent.prototype.ngOnInit = function () {
-                    this._postService.getPosts()
-                        .subscribe(function (posts) { return console.log(posts[0].id); });
-                };
                 AppComponent.prototype.onFavoriteChange = function ($event) {
                     console.log($event);
                 };
                 AppComponent.prototype.onVote = function ($event) {
                     console.log($event);
                 };
+                AppComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._postService.getPosts()
+                        .subscribe(function (posts) {
+                        _this.isLoading = false;
+                        console.log(posts[0].id);
+                    });
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "   \n    <!--\n <h2>My First Angular 2 App</h2>   \n \n    <courses></courses>\n     <like [totalLikes]=\"tweet.totalLikes\" [iLike]=\"tweet.iLike\"></like>\n    <authors></authors>\n        <voter\n        [voteCount]=\"post.voteCount\"\n        [myVote]=\"post.myVote\"\n        (vote)=\"onVote($event)\">\n    </voter>    \n    <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    <div *ngFor=\"#tweet of tweets\">\n            <tweet [data]=\"tweet\"></tweet>\n</div>\n            <ul>\n            <li *ngFor=\"#course of courses, #i = index\">\n            {{ i + 1 }} - {{ course }} </li>\n            </ul>\n            <br/>\n            {{ coursess.price | currency: 'EUR':true:'2.2-2'}}\n             <br/>\n        \n        <bs-panel title=\"Who can see my stuff?\">\n        Content of who can see my stuff\n        </bs-panel>\n        <bs-panel title=\"Who can contact me?\">\n            Content of who can contact me\n        </bs-panel>\n          <contact-form></contact-form>\n          <template-form></template-form>        \n          <signup-form></signup-form>          \n            <change-password-form></change-password-form>\n  -->\n        \n          \n  \n  \n    ",
+                        template: "   \n    <!--\n <h2>My First Angular 2 App</h2>   \n \n    <courses></courses>\n     <like [totalLikes]=\"tweet.totalLikes\" [iLike]=\"tweet.iLike\"></like>\n    <authors></authors>\n        <voter\n        [voteCount]=\"post.voteCount\"\n        [myVote]=\"post.myVote\"\n        (vote)=\"onVote($event)\">\n    </voter>    \n    <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    <div *ngFor=\"#tweet of tweets\">\n            <tweet [data]=\"tweet\"></tweet>\n</div>\n            <ul>\n            <li *ngFor=\"#course of courses, #i = index\">\n            {{ i + 1 }} - {{ course }} </li>\n            </ul>\n            <br/>\n            {{ coursess.price | currency: 'EUR':true:'2.2-2'}}\n             <br/>\n        \n        <bs-panel title=\"Who can see my stuff?\">\n        Content of who can see my stuff\n        </bs-panel>\n        <bs-panel title=\"Who can contact me?\">\n            Content of who can contact me\n        </bs-panel>\n          <contact-form></contact-form>\n          <template-form></template-form>        \n          <signup-form></signup-form>          \n            <change-password-form></change-password-form>\n  -->\n        <div *ngIf=\"isLoading\">\n                <i class=\"fa fa-spinner fa-spin fa-3x\"></i>            \n                \n       </div>     \n    ",
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favorite_component_1.FavoriteComponent, like_component_1.LikeComponent, voter_component_1.VoterComponent, tweet_component_1.TweetComponent,
                             bootstrap_panel_compenent_1.BootstrapPanel, contact_form_component_1.ContactFormComponent, template_driven_Form_component_1.TemplateFormComponent, signup_form_component_1.SignUpFormComponent, change_password_form_component_1.ChangePasswordFormComponent],
                         providers: [tweet_service_1.TweetService, post_service_1.PostService, http_1.HTTP_PROVIDERS]

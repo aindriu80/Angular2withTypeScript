@@ -52,10 +52,10 @@ import {OnInit} from 'angular2/core';
           <signup-form></signup-form>          
             <change-password-form></change-password-form>
   -->
-        
-          
-  
-  
+        <div *ngIf="isLoading">
+                <i class="fa fa-spinner fa-spin fa-3x"></i>            
+                
+       </div>     
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
     BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent],
@@ -63,7 +63,7 @@ import {OnInit} from 'angular2/core';
     
 })
 export class AppComponent implements OnInit{  
-    
+    isLoading = true;
     post ={
         voteCount:10,
         myVote:0,
@@ -78,21 +78,24 @@ export class AppComponent implements OnInit{
        constructor(tweetService: TweetService,private _postService:PostService){
         this.tweets = tweetService.getTweets();
      }
-    ngOnInit(){
-        this._postService.getPosts()
-       .subscribe(posts => console.log(posts[0].id));
-        }
+     courses =['course 1', 'course 2', 'course 3'];
+    coursess ={ 
+        price: 222.22,
+        students: 5943
+            };
     onFavoriteChange($event){
         console.log($event);
     }
     onVote($event){
         console.log($event);
     }
-    courses =['course 1', 'course 2', 'course 3'];
-    coursess ={ 
-        price: 222.22,
-        students: 5943
-            };
+    ngOnInit(){
+        this._postService.getPosts()
+       .subscribe(posts =>{
+            this.isLoading = false;             
+            console.log(posts[0].id);
+        });
+    }
            
  }
 
