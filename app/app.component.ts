@@ -11,7 +11,8 @@ import {ContactFormComponent} from './contact-form.component';
 import {TemplateFormComponent} from './template-driven-Form.component';
 import {SignUpFormComponent} from './signup-form.component';
 import {ChangePasswordFormComponent} from './change-password-form-component';
-
+import {PostService} from './post.service';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
     selector: 'my-app',
@@ -47,10 +48,9 @@ import {ChangePasswordFormComponent} from './change-password-form-component';
         </bs-panel>
           <contact-form></contact-form>
           <template-form></template-form>        
-          <signup-form></signup-form>
-            -->
+          <signup-form></signup-form>          
             <change-password-form></change-password-form>
-
+  -->
         
           
   
@@ -58,10 +58,11 @@ import {ChangePasswordFormComponent} from './change-password-form-component';
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
     BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent],
-    providers: [TweetService]
+    providers: [TweetService, PostService, HTTP_PROVIDERS]
     
 })
 export class AppComponent {
+    
     
     post ={
         voteCount:10,
@@ -74,8 +75,10 @@ export class AppComponent {
         iLike:false
     }
      tweets: any[];
-       constructor(tweetService: TweetService){
+       constructor(tweetService: TweetService,private _postService:PostService){
         this.tweets = tweetService.getTweets();
+        this._postService.getPosts()
+            .subscribe(posts => console.log(posts));
     }
 
     onFavoriteChange($event){
