@@ -13,6 +13,7 @@ import {SignUpFormComponent} from './signup-form.component';
 import {ChangePasswordFormComponent} from './change-password-form-component';
 import {PostService} from './post.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
+import {OnInit} from 'angular2/core';
 
 @Component({
     selector: 'my-app',
@@ -61,8 +62,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
     providers: [TweetService, PostService, HTTP_PROVIDERS]
     
 })
-export class AppComponent {
-    
+export class AppComponent implements OnInit{  
     
     post ={
         voteCount:10,
@@ -77,10 +77,11 @@ export class AppComponent {
      tweets: any[];
        constructor(tweetService: TweetService,private _postService:PostService){
         this.tweets = tweetService.getTweets();
+     }
+    ngOnInit(){
         this._postService.getPosts()
-            .subscribe(posts => console.log(posts));
-    }
-
+       .subscribe(posts => console.log(posts[0].id));
+        }
     onFavoriteChange($event){
         console.log($event);
     }
@@ -92,6 +93,7 @@ export class AppComponent {
         price: 222.22,
         students: 5943
             };
+           
  }
 
     

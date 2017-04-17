@@ -79,9 +79,11 @@ System.register(['angular2/core', './courses.component', './authors.component', 
                         students: 5943
                     };
                     this.tweets = tweetService.getTweets();
-                    this._postService.getPosts()
-                        .subscribe(function (posts) { return console.log(posts); });
                 }
+                AppComponent.prototype.ngOnInit = function () {
+                    this._postService.getPosts()
+                        .subscribe(function (posts) { return console.log(posts[0].id); });
+                };
                 AppComponent.prototype.onFavoriteChange = function ($event) {
                     console.log($event);
                 };
