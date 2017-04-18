@@ -14,17 +14,18 @@ import {ChangePasswordFormComponent} from './change-password-form-component';
 import {PostService} from './post.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {OnInit} from 'angular2/core';
+import {GitHubProfileComponent} from './github-profile.component';
+
 
 @Component({
     selector: 'my-app',
     template: `   
-    <!--
- <h2>My First Angular 2 App</h2>   
- 
+     <!--
+ <h2>My First Angular 2 App</h2>    
     <courses></courses>
-     <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
+    <like [totalLikes]="tweet.totalLikes" [iLike]="tweet.iLike"></like>
     <authors></authors>
-        <voter
+    <voter
         [voteCount]="post.voteCount"
         [myVote]="post.myVote"
         (vote)="onVote($event)">
@@ -32,17 +33,16 @@ import {OnInit} from 'angular2/core';
     <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
     <div *ngFor="#tweet of tweets">
             <tweet [data]="tweet"></tweet>
-</div>
-            <ul>
+    </div>
+        <ul>
             <li *ngFor="#course of courses, #i = index">
             {{ i + 1 }} - {{ course }} </li>
-            </ul>
+        </ul>
             <br/>
             {{ coursess.price | currency: 'EUR':true:'2.2-2'}}
-             <br/>
-        
+            <br/>        
         <bs-panel title="Who can see my stuff?">
-        Content of who can see my stuff
+             Content of who can see my stuff
         </bs-panel>
         <bs-panel title="Who can contact me?">
             Content of who can contact me
@@ -50,15 +50,18 @@ import {OnInit} from 'angular2/core';
           <contact-form></contact-form>
           <template-form></template-form>        
           <signup-form></signup-form>          
-            <change-password-form></change-password-form>
-  -->
+        <change-password-form></change-password-form>
+           
+ 
         <div *ngIf="isLoading">
-                <i class="fa fa-spinner fa-spin fa-3x"></i>            
-                
-       </div>     
+                <i class="fa fa-spinner fa-spin fa-3x"></i>        
+                 </div>  
+                 -->    
+               <github-profile></github-profile>
+         
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
-    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent],
+    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent, GitHubProfileComponent],
     providers: [TweetService, PostService, HTTP_PROVIDERS]
     
 })
