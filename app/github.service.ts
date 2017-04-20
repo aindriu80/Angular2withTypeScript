@@ -4,8 +4,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 import {Injectable} from 'angular2/core';
 
-
-
 @Injectable()
 export class GitHubService {
     
@@ -23,5 +21,5 @@ export class GitHubService {
         return this._http.get(this._usersUrl + username + "/followers")
             .map(res => res.json());
 
-    
+     }   
 }

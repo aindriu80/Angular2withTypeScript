@@ -52,11 +52,11 @@ import {GitHubProfileComponent} from './github-profile.component';
           <signup-form></signup-form>          
         <change-password-form></change-password-form>
            
- 
+ -->  
         <div *ngIf="isLoading">
                 <i class="fa fa-spinner fa-spin fa-3x"></i>        
                  </div>  
-                 -->    
+                   
                <github-profile></github-profile>
          
     `,
