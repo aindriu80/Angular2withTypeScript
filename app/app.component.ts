@@ -1,3 +1,4 @@
+import { NavBarComponent } from './navbar.component';
 import {Component} from 'angular2/core';
 import {CoursesComponent} from './courses.component';
 import {AuthorsComponent} from './authors.component';
@@ -52,16 +53,17 @@ import {GitHubProfileComponent} from './github-profile.component';
           <signup-form></signup-form>          
         <change-password-form></change-password-form>
            
- -->  
+
         <div *ngIf="isLoading">
                 <i class="fa fa-spinner fa-spin fa-3x"></i>        
                  </div>  
-                   
+                    -->  
+                    <navbar></navbar>
                <github-profile></github-profile>
          
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
-    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent, GitHubProfileComponent],
+    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent, GitHubProfileComponent, NavBarComponent],
     providers: [TweetService, PostService, HTTP_PROVIDERS]
     
 })
