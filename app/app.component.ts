@@ -1,5 +1,6 @@
-import { NavBarComponent } from './navbar.component';
+import {NavBarComponent} from './navbar.component';
 import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {CoursesComponent} from './courses.component';
 import {AuthorsComponent} from './authors.component';
 import {FavoriteComponent} from './favorite.component';
@@ -16,7 +17,11 @@ import {PostService} from './post.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {OnInit} from 'angular2/core';
 import {GitHubProfileComponent} from './github-profile.component';
+import {UsersComponent} from'./users.component';
 
+@RouteConfig([
+    { path: '/users', name: 'Users', component: UsersComponent },
+])
 
 @Component({
     selector: 'my-app',
@@ -57,9 +62,10 @@ import {GitHubProfileComponent} from './github-profile.component';
         <div *ngIf="isLoading">
                 <i class="fa fa-spinner fa-spin fa-3x"></i>        
                  </div>  
+                  <github-profile></github-profile>
                     -->  
                     <navbar></navbar>
-               <github-profile></github-profile>
+              
          
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
