@@ -17,10 +17,13 @@ import {PostService} from './post.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {OnInit} from 'angular2/core';
 import {GitHubProfileComponent} from './github-profile.component';
-import {UsersComponent} from'./users.component';
+import {UsersComponent} from './users.component';
+import {PostsComponent} from './posts.component';
+import {RouterLink} from 'angular2/router';
 
 @RouteConfig([
     { path: '/users', name: 'Users', component: UsersComponent },
+    { path: '/posts', name: 'Posts', component: PostsComponent },
 ])
 
 @Component({
@@ -65,11 +68,14 @@ import {UsersComponent} from'./users.component';
                   <github-profile></github-profile>
                     -->  
                     <navbar></navbar>
+                     <div class="container">
+            <router-outlet></router-outlet>
               
          
     `,
     directives: [CoursesComponent, AuthorsComponent, FavoriteComponent, LikeComponent, VoterComponent, TweetComponent, 
-    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent, GitHubProfileComponent, NavBarComponent],
+    BootstrapPanel, ContactFormComponent, TemplateFormComponent, SignUpFormComponent, ChangePasswordFormComponent, GitHubProfileComponent, 
+    NavBarComponent, RouterLink, ROUTER_DIRECTIVES],
     providers: [TweetService, PostService, HTTP_PROVIDERS]
     
 })
