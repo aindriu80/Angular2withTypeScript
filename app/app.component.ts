@@ -20,10 +20,12 @@ import {GitHubProfileComponent} from './github-profile.component';
 import {UsersComponent} from './users.component';
 import {PostsComponent} from './posts.component';
 import {RouterLink} from 'angular2/router';
+import {UserFormComponent} from './user-form.component';
 
 @RouteConfig([
     { path: '/users', name: 'Users', component: UsersComponent },
     { path: '/posts', name: 'Posts', component: PostsComponent },
+    { path: '/users/new', name: 'NewUser', component: UserFormComponent },
 ])
 
 @Component({
