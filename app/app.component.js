@@ -124,6 +124,7 @@ System.register(['./navbar.component', 'angular2/core', 'angular2/router', './co
                     router_1.RouteConfig([
                         { path: '/', name: 'Home', component: home_component_1.HomeComponent },
                         { path: '/users', name: 'Users', component: users_component_1.UsersComponent },
+                        { path: '/users/:id', name: 'EditUser', component: user_form_component_1.UserFormComponent },
                         { path: '/posts', name: 'Posts', component: posts_component_1.PostsComponent },
                         { path: '/users/new', name: 'NewUser', component: user_form_component_1.UserFormComponent },
                         { path: '/not-found', name: 'NotFound', component: not_found_component_1.NotFoundComponent },

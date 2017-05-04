@@ -13,8 +13,17 @@ import {Injectable} from 'angular2/core';
  		return this._http.get(this._url)
  			.map(res => res.json());
  	}
+
+	 getUser(userId){
+		return this._http.get(this.getUserUrl(userId))
+			.map(res => res.json());
+	}
 	 addUser(user){
 		 return this._http.post(this._url, JSON.stringify(user))
 		 			.map(res => res.json());
 	 }
+
+	 private getUserUrl(userId){
+		return this._url + "/" + userId;
+	}
  } 

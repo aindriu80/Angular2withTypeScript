@@ -26,7 +26,8 @@ import {HomeComponent} from './home.component';
 
 @RouteConfig([
     { path: '/', name: 'Home', component: HomeComponent },    
-    { path: '/users', name: 'Users', component: UsersComponent },    
+    { path: '/users', name: 'Users', component: UsersComponent },  
+    { path: '/users/:id', name: 'EditUser', component: UserFormComponent },  
     { path: '/posts', name: 'Posts', component: PostsComponent },
     { path: '/users/new', name: 'NewUser', component: UserFormComponent },
     { path: '/not-found', name: 'NotFound', component: NotFoundComponent },
