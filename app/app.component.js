@@ -1,4 +1,4 @@
-System.register(['./navbar.component', 'angular2/core', 'angular2/router', './courses.component', './authors.component', './favorite.component', './like.component', './voter.component', './tweet.component', './tweet.service', './bootstrap.panel.compenent', './contact-form.component', './template-driven-Form.component', './signup-form.component', './change-password-form-component', './post.service', 'angular2/http', './github-profile.component', './users.component', './posts.component', './user-form.component'], function(exports_1, context_1) {
+System.register(['./navbar.component', 'angular2/core', 'angular2/router', './courses.component', './authors.component', './favorite.component', './like.component', './voter.component', './tweet.component', './tweet.service', './bootstrap.panel.compenent', './contact-form.component', './template-driven-Form.component', './signup-form.component', './change-password-form-component', './post.service', 'angular2/http', './github-profile.component', './users.component', './posts.component', './user-form.component', './not-found.component', './home.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['./navbar.component', 'angular2/core', 'angular2/router', './co
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var navbar_component_1, core_1, router_1, courses_component_1, authors_component_1, favorite_component_1, like_component_1, voter_component_1, tweet_component_1, tweet_service_1, bootstrap_panel_compenent_1, contact_form_component_1, template_driven_Form_component_1, signup_form_component_1, change_password_form_component_1, post_service_1, http_1, github_profile_component_1, users_component_1, posts_component_1, router_2, user_form_component_1;
+    var navbar_component_1, core_1, router_1, courses_component_1, authors_component_1, favorite_component_1, like_component_1, voter_component_1, tweet_component_1, tweet_service_1, bootstrap_panel_compenent_1, contact_form_component_1, template_driven_Form_component_1, signup_form_component_1, change_password_form_component_1, post_service_1, http_1, github_profile_component_1, users_component_1, posts_component_1, router_2, user_form_component_1, not_found_component_1, home_component_1;
     var AppComponent;
     return {
         setters:[
@@ -77,6 +77,12 @@ System.register(['./navbar.component', 'angular2/core', 'angular2/router', './co
             },
             function (user_form_component_1_1) {
                 user_form_component_1 = user_form_component_1_1;
+            },
+            function (not_found_component_1_1) {
+                not_found_component_1 = not_found_component_1_1;
+            },
+            function (home_component_1_1) {
+                home_component_1 = home_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -116,9 +122,12 @@ System.register(['./navbar.component', 'angular2/core', 'angular2/router', './co
                 };
                 AppComponent = __decorate([
                     router_1.RouteConfig([
+                        { path: '/', name: 'Home', component: home_component_1.HomeComponent },
                         { path: '/users', name: 'Users', component: users_component_1.UsersComponent },
                         { path: '/posts', name: 'Posts', component: posts_component_1.PostsComponent },
                         { path: '/users/new', name: 'NewUser', component: user_form_component_1.UserFormComponent },
+                        { path: '/not-found', name: 'NotFound', component: not_found_component_1.NotFoundComponent },
+                        { path: '/*other', name: 'Other', redirectTo: ['Home'] }
                     ]),
                     core_1.Component({
                         selector: 'my-app',

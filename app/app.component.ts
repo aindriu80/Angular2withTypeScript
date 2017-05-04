@@ -21,11 +21,16 @@ import {UsersComponent} from './users.component';
 import {PostsComponent} from './posts.component';
 import {RouterLink} from 'angular2/router';
 import {UserFormComponent} from './user-form.component';
+import {NotFoundComponent} from './not-found.component';
+import {HomeComponent} from './home.component';
 
 @RouteConfig([
-    { path: '/users', name: 'Users', component: UsersComponent },
+    { path: '/', name: 'Home', component: HomeComponent },    
+    { path: '/users', name: 'Users', component: UsersComponent },    
     { path: '/posts', name: 'Posts', component: PostsComponent },
     { path: '/users/new', name: 'NewUser', component: UserFormComponent },
+    { path: '/not-found', name: 'NotFound', component: NotFoundComponent },
+    { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])
 
 @Component({
