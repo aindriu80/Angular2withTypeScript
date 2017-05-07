@@ -33,6 +33,20 @@ System.register(['angular2/core', 'angular2/router', './user.service'], function
                     this._service.getUsers()
                         .subscribe(function (users) { return _this.users = users; });
                 };
+                UsersComponent.prototype.deleteUser = function (user) {
+                    var _this = this;
+                    if (confirm("Are you sure you want to delete " + user.name + "?")) {
+                        var index = this.users.indexOf(user);
+                        // one object is removed at given index
+                        this.users.splice(index, 1);
+                        this._service.deleteUser(user.id)
+                            .subscribe(null, function (err) {
+                            alert("Could not delete the user.");
+                            // Send the view back to original state
+                            _this.users.splice(index, 0, user);
+                        });
+                    }
+                };
                 UsersComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/users.component.html',
