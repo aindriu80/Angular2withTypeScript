@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './post.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './post.service', './spinner.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './post.service'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, post_service_1;
+    var core_1, router_1, post_service_1, spinner_component_1;
     var PostsComponent;
     return {
         setters:[
@@ -22,23 +22,27 @@ System.register(['angular2/core', 'angular2/router', './post.service'], function
             },
             function (post_service_1_1) {
                 post_service_1 = post_service_1_1;
+            },
+            function (spinner_component_1_1) {
+                spinner_component_1 = spinner_component_1_1;
             }],
         execute: function() {
             PostsComponent = (function () {
                 function PostsComponent(_service) {
                     this._service = _service;
+                    this.isLoading = true;
                     this.posts = [];
                 }
                 PostsComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._service.getPosts()
-                        .subscribe(function (posts) { return _this.posts = posts; });
+                        .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.isLoading = false; });
                 };
                 PostsComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/posts.component.html',
                         providers: [post_service_1.PostService],
-                        directives: [router_1.RouterLink]
+                        directives: [router_1.RouterLink, spinner_component_1.SpinnerComponent]
                     }), 
                     __metadata('design:paramtypes', [post_service_1.PostService])
                 ], PostsComponent);
