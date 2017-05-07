@@ -11,7 +11,7 @@ import {User} from './user';
     templateUrl: 'app/user-form.component.html',
     providers: [UserService]
 })
-export class UserFormComponent implements OnInit,CanDeactivate {
+export class UserFormComponent implements OnInit, CanDeactivate {
 	form: ControlGroup;
      title: string;
 	 user = new User();
@@ -58,18 +58,12 @@ constructor(
 		return true; 
 	}
     
-    save(){
-	var result;
-        
-        if (this.user.id) 
-            result = this._userService.updateUser(this.user);
-        else
-            result = this._userService.addUser(this.user)
-            
-		result.subscribe(x => {
-            // Ideally, here we'd want:
-            // this.form.markAsPristine();
-            this._router.navigate(['Users']);
-        });
+     save(){
+		this._userService.addUser(this.form.value)
+            .subscribe(x => {
+                // Ideally, here we'd want:
+                // this.form.markAsPristine();
+                    this._router.navigate(['Users']);
+            });
 	}
 }

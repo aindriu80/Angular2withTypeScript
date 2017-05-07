@@ -71,12 +71,8 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './basic
                 };
                 UserFormComponent.prototype.save = function () {
                     var _this = this;
-                    var result;
-                    if (this.user.id)
-                        result = this._userService.updateUser(this.user);
-                    else
-                        result = this._userService.addUser(this.user);
-                    result.subscribe(function (x) {
+                    this._userService.addUser(this.form.value)
+                        .subscribe(function (x) {
                         // Ideally, here we'd want:
                         // this.form.markAsPristine();
                         _this._router.navigate(['Users']);

@@ -5,8 +5,7 @@ export class Address {
     zipcode: string;    
 }
 
-export class User {
-    id: number;
+export class User {    
     name: string;
     phone: string;
     email: string; 
