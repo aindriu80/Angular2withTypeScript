@@ -27,7 +27,7 @@
             </fieldset>
             <fieldset ngControlGroup="address">
                 <legend>Address</legend>
-                <div >
+              
                     <div class="form-group">
                         <label>Street</label>
                         <input [(ngModel)]="user.address.street" ngControl="street" type="text" class="form-control">
@@ -43,8 +43,7 @@
                     <div class="form-group">
                         <label>ZipCode</label>
                         <input [(ngModel)]="user.address.zipcode" ngControl="zipcode" type="text" class="form-control">
-                    </div>
-                
+                   </div>
             </fieldset>
             <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
                 Save
