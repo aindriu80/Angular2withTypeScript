@@ -30,5 +30,9 @@ import {Component, OnInit} from 'angular2/core';
 
     select(post){
         this.currentPost = post;
-    }
+
+        this._service.getComments(post.id)
+                        .subscribe( comments =>
+                        this.currentPost.comments = comments);
+        }
      }

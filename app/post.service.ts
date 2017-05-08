@@ -20,4 +20,9 @@ export class PostService {
         return this._http.post(this._url,JSON.stringify(post))
             .map(res => res.json());
     }
+
+    getComments(postId){
+        return this._http.get(this._url + "/" + postId + "/comments")
+                    .map(res => res.json());
+    }
 }

@@ -39,7 +39,12 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
                         .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.isLoading = false; });
                 };
                 PostsComponent.prototype.select = function (post) {
+                    var _this = this;
                     this.currentPost = post;
+                    this._service.getComments(post.id)
+                        .subscribe(function (comments) {
+                        return _this.currentPost.comments = comments;
+                    });
                 };
                 PostsComponent = __decorate([
                     core_1.Component({
