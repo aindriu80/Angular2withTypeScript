@@ -6,8 +6,9 @@ import {Component, OnInit} from 'angular2/core';
  
  @Component({
      templateUrl: 'app/posts.component.html',
+     styleUrls: ['app/styles.css'],
       providers: [PostService],
-     directives:[RouterLink, SpinnerComponent ]
+     directives:[RouterLink, SpinnerComponent]
  })
  export class PostsComponent implements OnInit  {
      isLoading = true;
@@ -24,8 +25,10 @@ import {Component, OnInit} from 'angular2/core';
  			            .subscribe(
                 posts => this.posts = posts,
                 null,
-                () => { this.isLoading =false;});
-
- 
+                () => { this.isLoading =false;}); 
              }
+
+    select(post){
+        this.currentPost = post;
+    }
      }

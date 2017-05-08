@@ -38,9 +38,13 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
                     this._service.getPosts()
                         .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.isLoading = false; });
                 };
+                PostsComponent.prototype.select = function (post) {
+                    this.currentPost = post;
+                };
                 PostsComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/posts.component.html',
+                        styleUrls: ['app/styles.css'],
                         providers: [post_service_1.PostService],
                         directives: [router_1.RouterLink, spinner_component_1.SpinnerComponent]
                     }), 
