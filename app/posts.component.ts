@@ -12,8 +12,8 @@ import {Component, OnInit} from 'angular2/core';
  })
  export class PostsComponent implements OnInit  {
      isLoading = true;
+     commentsisLoading;
     posts=[];
-    commentsLoading;
     currentPost;
 
      
@@ -30,9 +30,11 @@ import {Component, OnInit} from 'angular2/core';
 
     select(post){
         this.currentPost = post;
-
+        this.commentsisLoading = true;
         this._service.getComments(post.id)
-                        .subscribe( comments =>
-                        this.currentPost.comments = comments);
+                        .subscribe( 
+                        comments => this.currentPost.comments = comments,
+                        null,
+                        () => this.commentsisLoading =false);
         }
      }

@@ -41,10 +41,9 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
                 PostsComponent.prototype.select = function (post) {
                     var _this = this;
                     this.currentPost = post;
+                    this.commentsisLoading = true;
                     this._service.getComments(post.id)
-                        .subscribe(function (comments) {
-                        return _this.currentPost.comments = comments;
-                    });
+                        .subscribe(function (comments) { return _this.currentPost.comments = comments; }, null, function () { return _this.commentsisLoading = false; });
                 };
                 PostsComponent = __decorate([
                     core_1.Component({

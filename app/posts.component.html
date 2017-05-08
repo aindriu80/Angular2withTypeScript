@@ -11,31 +11,26 @@
          </li>
         </ul>
      </div> 
-
+      <div class="col-md-6">
  <div *ngIf="currentPost" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">{{ currentPost.title }}</h3>
   </div>
-  <div class="panel-body">
-       <p>{{ currentPost.body }}</p>
-
-       <div class="media" *ngFor="#comment of currentPost.comments">
-  <div class="media-left">
-    <a>
-      <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people/?random{{ comment.id }}" alt="...">
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">{{ comment.name }}</h4>
-    {{ comment.body }}
-    
-  </div>
-</div>
-  </div>
-
-
-
-
+    <div class="panel-body">
+        <p>{{ currentPost.body }}</p>
+            <spinner [visible]="commentsisLoading"></spinner>   
+        <div class="media" *ngFor="#comment of currentPost.comments">         
+        <div class="media-left">
+                <a>        
+                <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
+                </a>
+        </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{ comment.name }}</h4>
+                                {{ comment.body }}    
+        </div>
+        </div>
+    </div>
 
 </div>
 
