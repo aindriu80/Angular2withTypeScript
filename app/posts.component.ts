@@ -11,8 +11,8 @@ import {Component, OnInit} from 'angular2/core';
      directives:[RouterLink, SpinnerComponent]
  })
  export class PostsComponent implements OnInit  {
-     isLoading = true;
-     commentsisLoading;
+     postsLoading = true;
+     commentsareLoading;
     posts=[];
     currentPost;
 
@@ -25,16 +25,16 @@ import {Component, OnInit} from 'angular2/core';
  			            .subscribe(
                 posts => this.posts = posts,
                 null,
-                () => { this.isLoading =false;}); 
+                () => { this.postsLoading =false;}); 
              }
 
     select(post){
         this.currentPost = post;
-        this.commentsisLoading = true;
+        this.commentsareLoading = true;
         this._service.getComments(post.id)
                         .subscribe( 
                         comments => this.currentPost.comments = comments,
                         null,
-                        () => this.commentsisLoading =false);
+                        () => this.commentsareLoading =false);
         }
      }

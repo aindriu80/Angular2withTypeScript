@@ -30,20 +30,20 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
             PostsComponent = (function () {
                 function PostsComponent(_service) {
                     this._service = _service;
-                    this.isLoading = true;
+                    this.postsLoading = true;
                     this.posts = [];
                 }
                 PostsComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._service.getPosts()
-                        .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.isLoading = false; });
+                        .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.postsLoading = false; });
                 };
                 PostsComponent.prototype.select = function (post) {
                     var _this = this;
                     this.currentPost = post;
-                    this.commentsisLoading = true;
+                    this.commentsareLoading = true;
                     this._service.getComments(post.id)
-                        .subscribe(function (comments) { return _this.currentPost.comments = comments; }, null, function () { return _this.commentsisLoading = false; });
+                        .subscribe(function (comments) { return _this.currentPost.comments = comments; }, null, function () { return _this.commentsareLoading = false; });
                 };
                 PostsComponent = __decorate([
                     core_1.Component({
