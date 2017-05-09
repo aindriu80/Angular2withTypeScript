@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './user.service', './post.service', './spinner.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './user.service', './post.service', './spinner.component', './pagination.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './user.service', './post.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, user_service_1, post_service_1, spinner_component_1;
+    var core_1, router_1, user_service_1, post_service_1, spinner_component_1, pagination_component_1;
     var PostsComponent;
     return {
         setters:[
@@ -28,14 +28,19 @@ System.register(['angular2/core', 'angular2/router', './user.service', './post.s
             },
             function (spinner_component_1_1) {
                 spinner_component_1 = spinner_component_1_1;
+            },
+            function (pagination_component_1_1) {
+                pagination_component_1 = pagination_component_1_1;
             }],
         execute: function() {
             PostsComponent = (function () {
                 function PostsComponent(_service, _userService) {
                     this._service = _service;
                     this._userService = _userService;
+                    this.pagedPosts = [];
                     this.posts = [];
                     this.users = [];
+                    this.pageSize = 10;
                 }
                 PostsComponent.prototype.ngOnInit = function () {
                     this.loadUsers();
@@ -50,7 +55,10 @@ System.register(['angular2/core', 'angular2/router', './user.service', './post.s
                     var _this = this;
                     this.postsLoading = true;
                     this._service.getPosts(filter)
-                        .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.postsLoading = false; });
+                        .subscribe(function (posts) {
+                        _this.posts = posts;
+                        _this.pagedPosts = _this.getPostsInPage(1);
+                    }, null, function () { _this.postsLoading = false; });
                 };
                 PostsComponent.prototype.reloadPosts = function (filter) {
                     this.currentPost = null;
@@ -63,12 +71,23 @@ System.register(['angular2/core', 'angular2/router', './user.service', './post.s
                     this._service.getComments(post.id)
                         .subscribe(function (comments) { return _this.currentPost.comments = comments; }, null, function () { return _this.commentsareLoading = false; });
                 };
+                PostsComponent.prototype.onPageChanged = function (page) {
+                    this.pagedPosts = this.getPostsInPage(page);
+                };
+                PostsComponent.prototype.getPostsInPage = function (page) {
+                    var result = [];
+                    var startingIndex = (page - 1) * this.pageSize;
+                    var endIndex = Math.min(startingIndex + this.pageSize, this.posts.length);
+                    for (var i = startingIndex; i < endIndex; i++)
+                        result.push(this.posts[i]);
+                    return result;
+                };
                 PostsComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/posts.component.html',
                         styleUrls: ['app/styles.css'],
                         providers: [post_service_1.PostService, user_service_1.UserService],
-                        directives: [router_1.RouterLink, spinner_component_1.SpinnerComponent]
+                        directives: [router_1.RouterLink, spinner_component_1.SpinnerComponent, pagination_component_1.PaginationComponent]
                     }), 
                     __metadata('design:paramtypes', [post_service_1.PostService, user_service_1.UserService])
                 ], PostsComponent);
