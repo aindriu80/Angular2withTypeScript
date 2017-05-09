@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './post.service', './spinner.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './user.service', './post.service', './spinner.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, post_service_1, spinner_component_1;
+    var core_1, router_1, user_service_1, post_service_1, spinner_component_1;
     var PostsComponent;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (user_service_1_1) {
+                user_service_1 = user_service_1_1;
+            },
             function (post_service_1_1) {
                 post_service_1 = post_service_1_1;
             },
@@ -28,15 +31,30 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
             }],
         execute: function() {
             PostsComponent = (function () {
-                function PostsComponent(_service) {
+                function PostsComponent(_service, _userService) {
                     this._service = _service;
-                    this.postsLoading = true;
+                    this._userService = _userService;
                     this.posts = [];
+                    this.users = [];
                 }
                 PostsComponent.prototype.ngOnInit = function () {
+                    this.loadUsers();
+                    this.loadPosts();
+                };
+                PostsComponent.prototype.loadUsers = function () {
                     var _this = this;
-                    this._service.getPosts()
+                    this._userService.getUsers()
+                        .subscribe(function (users) { return _this.users = users; });
+                };
+                PostsComponent.prototype.loadPosts = function (filter) {
+                    var _this = this;
+                    this.postsLoading = true;
+                    this._service.getPosts(filter)
                         .subscribe(function (posts) { return _this.posts = posts; }, null, function () { _this.postsLoading = false; });
+                };
+                PostsComponent.prototype.reloadPosts = function (filter) {
+                    this.currentPost = null;
+                    this.loadPosts(filter);
                 };
                 PostsComponent.prototype.select = function (post) {
                     var _this = this;
@@ -49,10 +67,10 @@ System.register(['angular2/core', 'angular2/router', './post.service', './spinne
                     core_1.Component({
                         templateUrl: 'app/posts.component.html',
                         styleUrls: ['app/styles.css'],
-                        providers: [post_service_1.PostService],
+                        providers: [post_service_1.PostService, user_service_1.UserService],
                         directives: [router_1.RouterLink, spinner_component_1.SpinnerComponent]
                     }), 
-                    __metadata('design:paramtypes', [post_service_1.PostService])
+                    __metadata('design:paramtypes', [post_service_1.PostService, user_service_1.UserService])
                 ], PostsComponent);
                 return PostsComponent;
             }());

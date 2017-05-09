@@ -11,8 +11,13 @@ export class PostService {
     private _url ="http://jsonplaceholder.typicode.com/posts";
 
     constructor(private _http: Http){}
-    getPosts():Observable<Post[]>{
-        return this._http.get(this._url)
+    getPosts(filter?){
+        var url = this._url;
+
+        if(filter && filter.userId)
+        url += "?userId=" + filter.userId;
+
+        return this._http.get(url)
             .map(res => res.json());
     }
 
